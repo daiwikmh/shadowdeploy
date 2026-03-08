@@ -1,10 +1,9 @@
 services:
   - type: web
     name: shadow-matcher
-    runtime: rust
-    rootDir: sdp/ecloud
-    buildCommand: cargo build --release
-    startCommand: ./target/release/shadow-matcher
+    runtime: docker
+    dockerfilePath: sdp/ecloud/Dockerfile
+    dockerContext: sdp/ecloud
     envVars:
       - key: PORT
         value: 8080

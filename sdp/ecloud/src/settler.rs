@@ -58,9 +58,11 @@ impl Settler {
         sell_order_id: [u8; 32],
         amount_in: U256,
     ) -> Result<String> {
-        let tx = self
+        let pending = self
             .contract
-            .settle(buy_order_id, sell_order_id, amount_in, U256::zero())
+            .settle(buy_order_id, sell_order_id, amount_in, U256::zero());
+
+        let tx = pending
             .send()
             .await
             .context("settle tx send failed")?;
