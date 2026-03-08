@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: shadow-matcher
+    runtime: rust
+    rootDir: sdp/ecloud
+    buildCommand: cargo build --release
+    startCommand: ./target/release/shadow-matcher
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: RUST_LOG
+        value: shadow_matcher=info
